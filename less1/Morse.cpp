@@ -1,11 +1,12 @@
-#include "Arduino.h"
-#include "Morse.h"
+#include "arduino.h"
+#include "morse.h"
 
 Morse::Morse(int pin)
 {
 	pinMode(pin,OUTPUT);
 	_pin=pin;
 	_dottime=250;
+
 }
 
 void Morse::dot()
@@ -14,10 +15,12 @@ void Morse::dot()
 	delay(_dottime);
 	digitalWrite(_pin,LOW);
 	delay(_dottime);
+
 }
 
 void Morse::dash()
 {
+
 	digitalWrite(_pin,HIGH);
 	delay(_dottime*4);
 	digitalWrite(_pin,LOW);
@@ -26,177 +29,155 @@ void Morse::dash()
 
 void Morse::c_space()
 {
+
 	digitalWrite(_pin,LOW);
 	delay(_dottime*3);
 }
 
 void Morse::w_space()
 {
+
 	digitalWrite(_pin,LOW);
 	delay(_dottime*7);
 }
 void Morse::changeMorse(char ch,Morse m){
+
 	switch(ch){
-		case'a':{
+		case'a':
 			m.dot();
 			m.dash();
 			break;
-		}
-		case'b':{
+		case'b':
 			m.dash();
 			m.dot();
 			m.dot();
 			m.dot();
 			break;
-		}
-		case'c':{
+		case'c':
 			m.dash();
 			m.dot();
 			m.dash();
 			m.dot();
-			break;
-		}
-		case'd':{
+			break;	
+		case'd':
 			m.dash();
 			m.dot();
 			m.dot();
 			break;
-		}
-		case'e':{
+		case'e':
 			m.dot();
 			break;
-		}
-		case'f':{			
+		case'f':		
 			m.dot();
 			m.dot();
 			m.dash();
 			m.dot();
-			break;
-		}
-		case'g':{			
+			break;	
+		case'g':			
 			m.dash();
 			m.dash();
 			m.dot();
 			break;
-		}
-		case'h':{			
+		case'h':			
             m.dot();
 			m.dot();
 			m.dot();
 			m.dot();
 			break;
-		}
-		case'i':{			
+		case'i':		
 			m.dot();
 			m.dot();
 			break;
-		}
-		case'j':{			
+		case'j':		
 			m.dot();
 			m.dash();
 			m.dash(); 
 			m.dash(); 
 			break;
-		}
-		case'k':{						
+		case'k':						
 			m.dash();
 			m.dot(); 
 			m.dash(); 
 			break;
-		}
-		case'l':{						
+		case'l':						
 			m.dot(); 
 			m.dash();
 			m.dot();
 			m.dot(); 
 			break;
-		}
-		case'm':{						 
+		case'm':					 
 			m.dash();
 			m.dash(); 
 			break;
-		}
-		case'n':{						 
+		case'n':					 
 			m.dash();
 			m.dot(); 
 			break;
-		}
-		case'o':{						 
+		case'o':						 
 			m.dash();
 			m.dash();
 			m.dash(); 
 			break;
-		}
-		case'p':{						 
+		case'p':						 
 			m.dot();
 			m.dash();
 			m.dash();
 			m.dot(); 
 			break;
-		}
-		case'q':{						 
+		case'q':					 
 			m.dash();
 			m.dash();
 			m.dot();
 			m.dash(); 
 			break;
-		}
-		case'r':{						 
+		case'r':						 
 			m.dot();
 			m.dash();
 			m.dot();
 			break;
-		}
-		case's':{						 
+		case's':					 
 			m.dot();
 			m.dot();
 			m.dot();
 			break;
-		}
-		case't':{						 
+		case't':						 
 			m.dash();
 			break;
-		}
-		case'u':{
+		case'u':
 		    m.dot();
 			m.dot();						 
 			m.dash();
 			break;
-		}
-		case'v':{
+		case'v':
 		    m.dot();
 			m.dot();
 			m.dot();						 
 			m.dash();
 			break;
-		}
-		case'w':{
+		case'w':
 		    m.dot();						 
 			m.dash();
 			m.dash();
 			break;
-		}
-		case'x':{		    						 
+		case'x':		    						 
 			m.dash();
 			m.dot();
 			m.dot();
 			m.dash();
 			break;
-		}
-		case'y':{		    						 
+		case'y':		    						 
 			m.dash();
 			m.dot();
 			m.dash();
 			m.dash();
 			break;
-		}
-		case'z':{		    						 
+		case'z':		    						 
 			m.dash();
 			m.dash();
 			m.dot();
 			m.dot();			
 			break;
-		}
-		default: m.w_space();
+		default: 
+			m.w_space();
 	}
 }
